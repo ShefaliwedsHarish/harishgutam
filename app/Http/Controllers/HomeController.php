@@ -10,7 +10,7 @@ class HomeController extends Controller
 
     public  function hs_getindex(Request $request){
        
-        dd('heelo');
+             return view('welcome');
 
     }
 
