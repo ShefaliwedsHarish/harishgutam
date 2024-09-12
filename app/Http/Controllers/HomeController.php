@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    //
+    
 
     public  function hs_getindex(Request $request){
        
-             return view('welcome');
+             return view('index');
 
     }
 
