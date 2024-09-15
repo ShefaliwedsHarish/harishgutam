@@ -26,15 +26,169 @@ body {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
+  /* background: #fff; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.swiper-slide img {
+/* .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+} */
+
+/* .swiper-slide img {
+  display: block;
+
+  height: 100%;
+  width: 100%;
+  margin-top: 309px;
+} */
+
+/* jss code  */
+
+nav.navbar.navbar-expand-lg.hs_navbar_part {
+    
+    height: 89px;
 }
+
+nav.navbar.navbar-expand-lg.change_header{
+  background-color: #3fbaa8fa;
+}
+
+
+
+
+
+.navbar-nav .nav-link {
+    color: #ffffff;
+}
+a.navbar-brand {
+    color: #fca518;
+}
+
+
+/* home css  */
+.navbar_part {
+  position: -webkit-sticky; 
+  position: sticky;
+  top: 0;
+  z-index: 1000; 
+  background-color: #fff; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+
+.hs_details_data {
+  margin-top: 63px;
+
+}
+
+
+/* For the main heading */
+.hs_details_data h1 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 36px;
+  font-weight: bold;
+  color: #2C3E50;
+  margin-bottom: 20px;
+}
+/* Second paragraph (We are with you...) */
+.hs_second {
+  font-size: 18px;
+  font-style: italic;
+  color: #2980B9;
+  margin-bottom: 15px;
+}
+
+/* Description paragraph */
+.tird_second {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #34495E;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+.home_images{
+  float:left;
+}
+
+.card.home_images.second_images {
+  width: 295px;
+  height: 382px;
+}
+
+.card.home_images.thrid_images {
+  margin-top: -185px;
+}
+
+/* images part */
+
+.card.home_images.second_images {
+  height: 74px;
+}
+
+.card.home_images.second_images {
+  width: 295px;
+  height: 382px;
+}
+
+.card.home_images.thrid_images {
+  margin-top: -185px;
+}
+
+.home_images {
+  border-radius: 89px;
+}
+
+img.card-img-top {
+  border-radius: 54px;
+  height: 187px;
+  border: 2px solid black;
+}
+
+.second_images img.card-img-top {
+  height: 500px;
+ 
+}
+
+
+/* media query part */
+@media (min-width: 700px) {
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    margin-top: 309px;
+  }
+}
+
+/* 
+.swiper-slide img {
+  display: block;
+  width: 127%;
+  height: 100%;
+  object-fit: cover;
+  margin-top: -312px;
+  height: 51%;
+} */
+
+@media (min-width: 365px) and (max-width: 991px) {
+  .swiper-slide img {
+    display: block;
+    width: 127%;
+    height: 100%;
+    object-fit: cover;
+    margin-top: -323px;
+    height: 51%;
+  }
+
+  /* reduce hight mobile view */
+  .hs_details_data {
+       margin-top: -231px;
+}
+}
+
