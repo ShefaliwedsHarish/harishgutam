@@ -72,14 +72,6 @@ a.navbar-brand {
 
 
 /* home css  */
-.navbar_part {
-  position: -webkit-sticky; 
-  position: sticky;
-  top: 0;
-  z-index: 1000; 
-  background-color: #fff; 
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-}
 
 
 .hs_details_data {
@@ -155,16 +147,56 @@ img.card-img-top {
  
 }
 
+/* review part */
+.testimonial-card .card-up {
+  height: 120px;
+  overflow: hidden;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+.testimonial-card .avatar {
+  width: 110px;
+  margin-top: -60px;
+  overflow: hidden;
+  border: 3px solid #fff;
+  border-radius: 50%;
+}
 
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  margin-top: 500px
+}
+
+
+
+/* about page */
+
+.wave-container {
+  background-color: #333; 
+  color: white;
+  text-align: center;
+  position: relative;
+  padding: 50px 0;
+}
+
+
+
+.wave-content {
+  position: relative;
+  z-index: 1;
+  margin-top:193px
+}
 /* media query part */
-@media (min-width: 700px) {
+/* @media (min-width: 700px) {
   .swiper-slide img {
     display: block;
     width: 100%;
     object-fit: cover;
     margin-top: 309px;
   }
-}
+} */
 
 /* 
 .swiper-slide img {

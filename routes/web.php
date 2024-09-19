@@ -19,6 +19,7 @@ use App\Http\Controllers\HomeController;
 // });
 
 Route::get('/', [HomeController::class, 'hs_getindex']);
+Route::get('/about_us', [HomeController::class, 'hs_getabout'])->name('about_us');
 Route::get('/login',function (){
 })->name('login');
 Route::get('/registration',function (){

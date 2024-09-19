@@ -10,7 +10,7 @@
     <body> 
       {{-- hs_navbar_part --}}
      <div class="navbar_part">
-        <nav class="navbar navbar-expand-lg change_header hs_navbar_part">
+        <nav class="navbar navbar-expand-lg  fixed-top change_header hs_navbar_part">
             <div class="container-fluid">
               <a class="navbar-brand  " href="#">Navbar</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,11 +22,11 @@
                     <a class="nav-link " aria-current="page" href="#">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">About</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
+                      Online Service
                     </a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="#">Action</a></li>
@@ -36,7 +36,7 @@
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+                    <a class="nav-link">Contact Us</a>
                   </li>
                 </ul>
          
