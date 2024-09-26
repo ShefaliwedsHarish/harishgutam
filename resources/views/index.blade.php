@@ -5,17 +5,20 @@
 @stop
 
 @section('content')
+@php 
+$config=config('path.craousal');
+@endphp 
 
 <body>
 <!-- Swiper -->
 <div class="swiper homeslider">
   <div class="swiper-wrapper">
-    <div class="swiper-slide"><img src="/slider/img1.jpg"> </div>
-    <div class="swiper-slide"><img src="/slider/img2.jpg"></div>
-    <div class="swiper-slide"><img src="/slider/img3.jpg"></div>
-    <div class="swiper-slide"><img src="/slider/img4.jpg"></div>
-    <div class="swiper-slide"><img src="/slider/img5.jpg"></div>
-    <div class="swiper-slide"><img src="/slider/img6.jpg"></div>
+    <div class="swiper-slide"><img src="{{$config}}img1.jpg"> </div>
+    <div class="swiper-slide"><img src="{{$config}}img2.jpg"></div>
+    <div class="swiper-slide"><img src="{{$config}}img3.jpg"></div>
+    <div class="swiper-slide"><img src="{{$config}}img4.jpg"></div>
+    <div class="swiper-slide"><img src="{{$config}}img5.jpg"></div>
+    <div class="swiper-slide"><img src="{{$config}}img6.jpg"></div>
   </div>
   {{-- <div class="swiper-pagination"></div> --}}
 </div>
@@ -39,13 +42,13 @@
    {{-- images part --}}
     <div class="col-sm-12 col-lg-6 col-xl-6">
       <div class="card home_images" style="width: 18rem;">
-        <img src="/slider/img1.jpg" class="card-img-top" alt="...">
+        <img src="{{$config}}img1.jpg" class="card-img-top" alt="...">
       </div>
       <div class="card home_images second_images" style="width: 18rem;">
-        <img src="/slider/img1.jpg" class="card-img-top" alt="...">
+        <img src="{{$config}}img1.jpg" class="card-img-top" alt="...">
       </div>
       <div class="card home_images thrid_images" style="width: 18rem;">
-        <img src="/slider/img1.jpg" class="card-img-top" alt="...">
+        <img src="{{$config}}img1.jpg" class="card-img-top" alt="...">
       </div>
     </div>
   </div>

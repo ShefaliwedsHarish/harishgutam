@@ -9,7 +9,6 @@
     </head> 
     <body> 
 
-      {{-- /Hello my name is harish gatam  i am from solan --}}
       {{-- hs_navbar_part --}}
      <div class="navbar_part">
         <nav class="navbar navbar-expand-lg  fixed-top change_header hs_navbar_part">
