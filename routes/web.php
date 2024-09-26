@@ -18,8 +18,10 @@ use App\Http\Controllers\HomeController;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'hs_getindex']);
-Route::get('/about_us', [HomeController::class, 'hs_getabout'])->name('about_us');
+Route::get('/', [HomeController::class, 'hs_getindex'])->name('home');
+Route::get('/about', [HomeController::class, 'hs_getabout'])->name('about_us');
+Route::get('/contact', [HomeController::class, 'hs_getcontact'])->name('contact_us');
+
 Route::get('/login',function (){
 })->name('login');
 Route::get('/registration',function (){

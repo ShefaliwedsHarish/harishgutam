@@ -8,9 +8,17 @@
          @include('layout.link')
     </head> 
     <body> 
-
       {{-- hs_navbar_part --}}
+
+      <div class="hs_socialmedia">
+        <div class="row">
+          <div class="col-6"></div>
+          <div class="col-6 social_media_part"></div>
+        </div>
+       </div>
+      
      <div class="navbar_part">
+    
         <nav class="navbar navbar-expand-lg  fixed-top change_header hs_navbar_part">
             <div class="container-fluid">
               <a class="navbar-brand  " href="#">Navbar</a>
@@ -20,10 +28,10 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="#">Home</a>
+                    <a class="nav-link " aria-current="page" href="{{route('home')}}">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="{{route('about_us')}}">About</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,17 +45,18 @@
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link">Contact Us</a>
+                    <a class="nav-link" href="{{route('contact_us')}}">Contact Us</a>
                   </li>
                 </ul>
          
               </div>
             </div>
           </nav>
-       </div>
-          
+       </div>   
           @yield('content')
     </body> 
+
+    {{-- footer part  --}}
     <footer class="bg-body-tertiary text-center text-lg-start">
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
