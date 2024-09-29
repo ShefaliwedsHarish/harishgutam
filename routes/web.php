@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\authGoogleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,8 @@ use App\Http\Controllers\HomeController;
 //     return view('welcome');
 // });
 
+Route::get('/auth/redirect',[authGoogleController::class,'hsgoogleLogin'])->name('google_login');
+Route::get('/auth/google_callback',[authGoogleController::class,'hsValidateLogin']);
 Route::get('/', [HomeController::class, 'hs_getindex'])->name('home');
 Route::get('/about', [HomeController::class, 'hs_getabout'])->name('about_us');
 Route::get('/contact', [HomeController::class, 'hs_getcontact'])->name('contact_us');

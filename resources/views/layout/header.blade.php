@@ -17,8 +17,7 @@
         </div>
        </div>
       
-     <div class="navbar_part">
-    
+     <div class="navbar_part"> 
         <nav class="navbar navbar-expand-lg  fixed-top change_header hs_navbar_part">
             <div class="container-fluid">
               <a class="navbar-brand  " href="#">HSGroup</a>
@@ -47,13 +46,95 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('contact_us')}}">Contact Us</a>
                   </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-target="#login_user" data-bs-toggle="modal" href="#">Login</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{route('contact_us')}}">Register</a>
+                  </li>
+        
+
+                 
                 </ul>
          
               </div>
             </div>
           </nav>
        </div>   
-          @yield('content')
+
+       {{-- model part --}}
+
+      <div class="modal fade" id="login_user" aria-hidden="true" aria-labelledby="login_user" tabindex="-1">
+        <div class="modal-dialog  modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Login User</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <section class="vh-100">
+                <div class="container py-5 h-100">
+                  <div class="row d-flex align-items-center justify-content-center h-100">
+                    <div class="col-md-8 col-lg-7 col-xl-6">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                        class="img-fluid" alt="Phone image">
+                    </div>
+                    <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                      <form>
+                        <!-- Email input -->
+                        <div data-mdb-input-init class="form-outline mb-4">
+                          <input type="email" id="form1Example13" class="form-control form-control-lg" />
+                          <label class="form-label" for="form1Example13">Email address</label>
+                        </div>
+              
+                        <!-- Password input -->
+                        <div data-mdb-input-init class="form-outline mb-4">
+                          <input type="password" id="form1Example23" class="form-control form-control-lg" />
+                          <label class="form-label" for="form1Example23">Password</label>
+                        </div>
+              
+                        <div class="d-flex justify-content-around align-items-center mb-4">
+                          <!-- Checkbox -->
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                            <label class="form-check-label" for="form1Example3"> Remember me </label>
+                          </div>
+                          <a href="#!">Forgot password?</a>
+                        </div>
+              
+                        <!-- Submit button -->
+                        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block">Sign in</button>
+              
+                        <div class="divider d-flex align-items-center my-4">
+                          <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+                        </div>
+              
+                        <a data-mdb-ripple-init class="btn btn-primary btn-lg btn-block" style="background-color: #3b5998" href="{{route('google_login')}}"
+                          role="button">
+                          <i class="fab fa-google-f me-2"></i>Continue with Google
+                        </a>
+                      
+              
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+            <div class="modal-footer">
+               </div>
+          </div>
+        </div>
+      </div>
+        
+      
+      
+      
+      
+      @yield('content')
     </body> 
 
     {{-- footer part  --}}
