@@ -101,7 +101,7 @@
                             <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
                             <label class="form-check-label" for="form1Example3"> Remember me </label>
                           </div>
-                          <a href="#!">Forgot password?</a>
+                          <a href="#!" data-bs-toggle="modal" data-bs-target="#forgot_password">Forgot password?</a>
                         </div>
               
                         <!-- Submit button -->
@@ -115,8 +115,6 @@
                           role="button">
                           <i class="fab fa-google-f me-2"></i>Continue with Google
                         </a>
-                      
-              
                       </form>
                     </div>
                   </div>
@@ -130,6 +128,31 @@
         </div>
       </div>
         
+
+      {{-- forgot password --}}
+
+    
+      
+      <!-- Modal -->
+      <div class="modal fade" id="forgot_password" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {{-- endforgot --}}
       
       
       

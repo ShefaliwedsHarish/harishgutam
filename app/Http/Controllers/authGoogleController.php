@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class authGoogleController extends Controller
 {
@@ -17,11 +18,7 @@ class authGoogleController extends Controller
 
     public function hsValidateLogin(){
         $user = Socialite::driver('google')->user();
-        // echo "<pre>";
-        // print_r($user); 
-        // dd($user->user['sub']);
-
-
+   
             $user = User::updateOrCreate([
                 'email' => $user->email,
             ], [
@@ -33,10 +30,18 @@ class authGoogleController extends Controller
                 'profile_picture' => $user->user['picture'],
             ]);
      
-        // Auth::login($user);
+        Auth::login($user);
      
-        // return redirect('/dashboard');
+        return redirect('/dashboard');
 
+    }
+
+    public function hsdashbord(){
+
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        
+        return view('admin.dashbord', ['user_data' => $user]);
     }
    
 }
