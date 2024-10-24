@@ -5,6 +5,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class authGoogleController extends Controller
 {
@@ -30,12 +31,41 @@ class authGoogleController extends Controller
                 'profile_picture' => $user->user['picture'],
             ]);
      
-        Auth::login($user);
-     
+        Auth::login($user);   
         return redirect('/dashboard');
-
     }
 
+    public function hsuser_register(Request $request)
+    {
+        try {
+            // Validate input
+       
+            $validatedData = $request->validate([
+                'hs_firstname' => 'required|string|max:255',
+                'hs_email' => 'required|string|email|max:255|unique:users,email',
+                'hs_password' => 'required|string|min:6',
+                'hs_confirmpassword' => 'required|string|min:6|same:hs_password',
+            ]);
+
+
+            $user = new User;
+            $user->name = $request->hs_firstname;
+            $user->email = $request->hs_email;
+            $user->password = $request->hs_password;
+            $user->save();
+
+            Auth::login($user);   
+                  
+            // Your logic here if validation passes
+            return response()->json(['message' => 'Validation passed','status'=>true], 200);
+        
+        } catch (ValidationException $e) {
+            // Return response with validation error messages
+            return response()->json(['errors' => $e->errors()], 422);
+        }
+    
+       
+    }
     public function hsdashbord(){
 
         $id = Auth::user()->id;

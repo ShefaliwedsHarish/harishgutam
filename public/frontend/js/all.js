@@ -1,3 +1,11 @@
+$(document).ready(function (){
+    
+    $.ajaxSetup({
+        headers:
+        { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+    });
+    
+});
 
 
 $(document).ready(function (){
@@ -15,6 +23,57 @@ $(document).ready(function (){
     });
 });
 
+
+
+// register ajax
+$(document).ready(function (){
+  $("#register_form").on("submit",function (e){
+    e.preventDefault(); 
+//    var data= $(this).serialize(); 
+var formData = new FormData(this);
+//    console.log(data);
+   $.ajax({
+    url: "/auth/user-register",  
+    type: "POST",                         
+    data: formData,                           
+    contentType: false, // Important: Don't set the content type manually
+    processData: false,      
+    success: function(response) {         
+        console.log(response);            
+    },
+     error: function(xhr) {
+        if (xhr.status === 422) {
+              let errors = xhr.responseJSON.errors;
+      
+              $.each(errors, function(key, value) {
+              
+                $('#' + key + '-error').text(value[0]); 
+                $('#' + key + '-error').show(); 
+                hs_hidealert(); 
+
+            });
+        } else {
+            console.error('Error:', xhr);
+            alert('An error occurred. Please try again.');
+        }
+    }
+
+});
+
+
+  })
+
+})
+
+// hide custom alert
+
+function hs_hidealert(){
+   
+    setTimeout(function() {
+        $(".alert").fadeOut();
+    }, 5000);
+
+}
 
 // remove the class when screen size
 
@@ -37,3 +96,5 @@ $(document).ready(function() {
         checkScreenSize();
     });
 });
+
+

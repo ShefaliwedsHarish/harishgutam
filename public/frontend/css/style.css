@@ -333,3 +333,8 @@ background: #eee;
   .card-registration .select-arrow {
   top: 13px;
   }
+
+  /* hide custom alert */
+  .alert{
+    display:none;
+  }
