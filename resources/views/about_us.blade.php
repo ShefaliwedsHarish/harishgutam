@@ -9,7 +9,7 @@
 <body> 
   {{-- first section with images and color  --}}
   @include('layout.first_section')
-    
+      
 
   {{-- second section --}}
  <section class="hs_peragraph">  

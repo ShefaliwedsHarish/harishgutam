@@ -38,8 +38,11 @@ var formData = new FormData(this);
     data: formData,                           
     contentType: false, // Important: Don't set the content type manually
     processData: false,      
-    success: function(response) {         
-        console.log(response);            
+    success: function(response) {   
+      
+        if(response.status==true){
+            window.location.href = '/dashboard'; 
+        }    
     },
      error: function(xhr) {
         if (xhr.status === 422) {
@@ -75,6 +78,54 @@ function hs_hidealert(){
 
 }
 
+
+
+/*
+*Login register 
+*/
+$(document).ready(function (){
+ 
+    $("#login_form").submit(function (e){
+        e.preventDefault(); 
+        var login_details=new FormData(this);
+        $.ajax({
+            url: "/auth/user-login",  
+            type: "POST",                         
+            data: login_details,                           
+            contentType: false, // Important: Don't set the content type manually
+            processData: false,      
+            success: function(response) {   
+              
+                if(response.status==true){
+                    window.location.href = '/dashboard'; 
+                }else{
+                    alert(response.message)
+                }
+            },
+             error: function(xhr) {
+                if (xhr.status === 422) {
+                      let errors = xhr.responseJSON.errors;
+              
+                      $.each(errors, function(key, value) {
+                      
+                        $('#' + key + '-error').text(value[0]); 
+                        $('#' + key + '-error').show(); 
+                        hs_hidealert(); 
+        
+                    });
+                } else {
+                    console.error('Error:', xhr);
+                    alert('An error occurred. Please try again.');
+                }
+            }
+        
+        });
+        
+
+    });
+
+
+});
 // remove the class when screen size
 
 

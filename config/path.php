@@ -9,6 +9,7 @@ return [
     'dairy'=>'/dariy',
     'epfo'=>'/EPFO/',
     'itr'=>'/itr',
+    'admin'=>'/admin/',
     
 ]; 
 

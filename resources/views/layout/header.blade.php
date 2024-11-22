@@ -94,11 +94,11 @@
                                         class="img-fluid" alt="Phone image">
                                 </div>
                                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-                                    <form>
+                                    <form id="login_form">
                                         <!-- Email input -->
                                         <div data-mdb-input-init class="form-outline mb-4">
                                             <input type="email" id="hs_emaillogin"
-                                                class="form-control form-control-lg" name="" />
+                                                class="form-control form-control-lg" name="email" />
                                             <label class="form-label" for="form1Example1hs_emaillogin3">Email
                                                 address</label>
                                         </div>
@@ -106,7 +106,7 @@
                                         <!-- Password input -->
                                         <div data-mdb-input-init class="form-outline mb-4">
                                             <input type="password" id="form1Example23"
-                                                class="form-control form-control-lg" />
+                                                class="form-control form-control-lg" name="password"/>
                                             <label class="form-label" for="form1Example23">Password</label>
                                         </div>
 
@@ -240,32 +240,21 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="row">
-                                                            <div class="col-md-6 mb-4">
-                                                                <div data-mdb-input-init class="form-outline">
-                                                                    <input type="number" id="hs_phonenumber"
-                                                                        class="form-control form-control-lg"
-                                                                        name="hs_phonenumber" />
-                                                                    <label class="form-label"
-                                                                        for="hs_phonenumber">Phone Number </label>
-                                                                </div>
-                                                                <div class="alert alert-danger" id="hs_phonenumber-error">
-                                                                  
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6 mb-4">
-                                                                <div data-mdb-input-init class="form-outline">
-                                                                    <input type="email" id="hs_email"
+                                                         <div data-mdb-input-init class="form-outline mb-4">
+                                                          <input type="email" id="hs_email"
                                                                         name="hs_email"
                                                                         class="form-control form-control-lg"
                                                                         name="email" />
                                                                     <label class="form-label"
                                                                         for="hs_email">Email</label>
-                                                                </div>
-                                                                <div class="alert alert-danger" id="hs_email-error">
-                                                                  
-                                                                </div>
-                                                            </div>
+                                                                         
+                                                           
+                                                        </div> 
+                                                        <div class=
+                                                          <div data-mdb-input-init class="form-outline mb-4">
+                                                            <input type="file" id="hs_profile" name="hs_profile"
+                                                                class="form-control form-control-lg" />
+                                                            <label class="form-label" for="hs_profile">Profile</label>
                                                         </div>
 
                                                         <div class="row">
@@ -296,11 +285,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div data-mdb-input-init class="form-outline mb-4">
-                                                            <input type="file" id="hs_profile" name="hs_profile"
-                                                                class="form-control form-control-lg" />
-                                                            <label class="form-label" for="hs_profile">Profile</label>
-                                                        </div>
+                                                      
 
 
 

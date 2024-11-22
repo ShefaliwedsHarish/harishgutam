@@ -63,15 +63,38 @@ class authGoogleController extends Controller
             // Return response with validation error messages
             return response()->json(['errors' => $e->errors()], 422);
         }
-    
-       
+ 
     }
-    public function hsdashbord(){
+
+    public function hsuser_login(Request $request){
+      try{
+        
+        $validatedData = $request->validate([
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:6',
+           ]);
+        if(Auth::attempt($validatedData)){
+            return response()->json(['message' => 'Validation passed','status'=>true], 200);
+        }else{
+            return response()->json(['message' => 'Validation not pass','status'=>false], 200);
+        }
+
+
+
+      }catch (ValidationException $e) {
+        // Return response with validation error messages
+        return response()->json(['errors' => $e->errors()], 422);
+    }
+
+
+    }
+
+    public function hs_dashbord(){
 
         $id = Auth::user()->id;
         $user = User::find($id);
         
-        return view('admin.dashbord', ['user_data' => $user]);
+        return view('admin.pages.index', ['user_data' => $user]);
     }
    
 }

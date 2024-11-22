@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;  // Import the Auth facade
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\authGoogleController;
+use App\Http\Controllers\authGoogleController;  // Adjusted to PascalCase
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,30 +16,30 @@ use App\Http\Controllers\authGoogleController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route to handle Google authentication
-
-Route::group(['prefix' => 'auth'], function () {
-  Route::get('/redirect', [authGoogleController::class, 'hsgoogleLogin'])->name('google_login');
-  Route::get('/google_callback', [authGoogleController::class, 'hsValidateLogin']);
-  Route::post('/user-register',[authGoogleController::class, 'hsuser_register']);
+Route::fallback(function () {
+    return redirect()->route('home'); // Replace 'home' with your actual homepage route name
 });
 
-
+// Google authentication routes
+Route::group(['prefix' => 'auth'], function () {
+    Route::get('/redirect', [authGoogleController::class, 'hsgoogleLogin'])->name('google_login');
+    Route::get('/google_callback', [authGoogleController::class, 'hsValidateLogin']);
+    Route::post('/user-register', [authGoogleController::class, 'hsuser_register']);
+    Route::post('/user-login', [authGoogleController::class, 'hsuser_login']);
+});
 
 // Home page routes
 Route::get('/', [HomeController::class, 'hs_getindex'])->name('home');
-Route::get('/about', [HomeController::class, 'hs_getabout'])->name('about_us');
-Route::get('/contact', [HomeController::class, 'hs_getcontact'])->name('contact_us');
+Route::get('/about', [HomeController::class, 'hs_getAbout'])->name('about_us');
+Route::get('/contact', [HomeController::class, 'hs_getContact'])->name('contact_us');
 
-// Dashboard route
-Route::get('/dashboard', [authGoogleController::class, 'hsdashbord']);
+Route::get('/online', [HomeController::class, 'hs_onlineservice'])->name('online_service');
+
+// Dashboard route (should be protected by authentication)
+Route::get('/dashboard', [authGoogleController::class, 'hs_dashbord'])->middleware('auth')->name('dashboard');
 
 // Admin registration route
-Route::get('/admin_register', [authGoogleController::class, 'hs_adminregistration']);
+Route::get('/admin_register', [authGoogleController::class, 'adminRegistration'])->name('admin_register');
 
 // Logout route
 Route::get('/logout', function () {
@@ -45,22 +47,13 @@ Route::get('/logout', function () {
     return redirect('/');
 })->name('logout');
 
-// Grouping routes for users under the 'user' prefix
-Route::group(['prefix' => 'user'], function () {
-    Route::get('dashboard', [authGoogleController::class, 'dashboard'])->name('user.dashboard');
+// Grouping routes for users under the 'user' prefix (with authentication middleware)
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
+    Route::get('dashboard', [authGoogleController::class, 'userDashboard'])->name('user.dashboard');
     Route::get('users', [authGoogleController::class, 'users'])->name('user.users');
 });
 
-// Placeholder login and registration routes
-Route::get('/login', function () {
-    // Add your login logic here
-})->name('login');
-
-Route::get('/registration', function () {
-    // Add your registration logic here
-})->name('register');
-
-
-
-
+// Login and Registration routes (use controller methods instead of closures)
+Route::get('/login', [authGoogleController::class, 'showLoginForm'])->name('login');
+Route::get('/registration', [authGoogleController::class, 'showRegistrationForm'])->name('register');
 
