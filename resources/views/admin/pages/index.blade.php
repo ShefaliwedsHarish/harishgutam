@@ -9,7 +9,7 @@ $route=config('path.admin')
    
 @section('content')
      <!-- Sale & Revenue Start -->
-     {{-- testing for this  --}}
+    
       <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-sm-6 col-xl-3">
@@ -17,7 +17,7 @@ $route=config('path.admin')
                     <i class="fa fa-chart-line fa-3x text-primary"></i>
                     <div class="ms-3">
                         <p class="mb-2">Today Sale</p>
-                        <h6 class="mb-0">$143982</h6>
+                        <h6 class="mb-0">$1234</h6>
                     </div>
                 </div>
             </div>
