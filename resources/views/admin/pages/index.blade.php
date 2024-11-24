@@ -17,7 +17,7 @@ $route=config('path.admin')
                     <i class="fa fa-chart-line fa-3x text-primary"></i>
                     <div class="ms-3">
                         <p class="mb-2">Today Sale</p>
-                        <h6 class="mb-0">$1234</h6>
+                        <h6 class="mb-0">$123456WW</h6>
                     </div>
                 </div>
             </div>
