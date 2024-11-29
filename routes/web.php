@@ -27,7 +27,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/user-register', [authGoogleController::class, 'hsuser_register']);
     Route::post('/user-login', [authGoogleController::class, 'hsuser_login']);
     Route::post('/user-forgot', [authGoogleController::class, 'hsuser_forgot']);
-    Route::get('/reset-password/{token}', [authGoogleController::class, 'hs_showResetForm'])->name('password.reset');
+    Route::get('/reset-password/{token}', [authGoogleController::class, 'showResetForm'])->name('password.reset');
   
     
 });
