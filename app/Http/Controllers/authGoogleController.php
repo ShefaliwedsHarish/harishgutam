@@ -6,10 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ForgotPasswordEmail;
+use Illuminate\Support\Facades\Password;
+
+     
+
 
 class authGoogleController extends Controller
 {
-     
+
     // redirect login
     public function hsgoogleLogin(Request $request){
 
@@ -95,6 +101,35 @@ class authGoogleController extends Controller
         $user = User::find($id);
         
         return view('admin.pages.index', ['user_data' => $user]);
+    }
+
+    public function hsuser_forgot(Request $request){
+
+        $gmail=$request->hs_forgotemail;
+        $data=User::Where('email',$gmail)->first();
+        $user_id=$data->id; 
+        $user_name=md5($data->name);
+        $currentUrl =  url('/');
+        $resetUrl = $currentUrl.'/auth/reset-password/' .$user_name."_".$user_id ; // Generate a reset URL dynamically
+        Mail::to($request->email)->send(new ForgotPasswordEmail($resetUrl));
+    
+        return response()->json(['message' => 'Password reset email sent.','status'=>'200']);
+
+    }
+
+
+    public function hs_showResetForm(Request $request ,$token){
+        $parts = explode('_', $token); // Split the string by '_'
+        $name = $parts[0]; 
+        $id=$parts[1];
+        $user=User::find($id);
+       
+        $user_name=md5($user->name);
+       if($user_name==$name){
+          dd("show form "); 
+       }else{
+        dd("show not form"); 
+       }
     }
    
 }

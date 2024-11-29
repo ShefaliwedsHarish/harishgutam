@@ -26,7 +26,12 @@ Route::group(['prefix' => 'auth'], function () {
     Route::get('/google_callback', [authGoogleController::class, 'hsValidateLogin']);
     Route::post('/user-register', [authGoogleController::class, 'hsuser_register']);
     Route::post('/user-login', [authGoogleController::class, 'hsuser_login']);
+    Route::post('/user-forgot', [authGoogleController::class, 'hsuser_forgot']);
+    Route::get('/reset-password/{token}', [authGoogleController::class, 'hs_showResetForm'])->name('password.reset');
+  
+    
 });
+
 
 // Home page routes
 Route::get('/', [HomeController::class, 'hs_getindex'])->name('home');
@@ -34,6 +39,7 @@ Route::get('/about', [HomeController::class, 'hs_getAbout'])->name('about_us');
 Route::get('/contact', [HomeController::class, 'hs_getContact'])->name('contact_us');
 
 Route::get('/online', [HomeController::class, 'hs_onlineservice'])->name('online_service');
+Route::get('/send-simple-email', [HomeController::class, 'emailtest']);
 
 // Dashboard route (should be protected by authentication)
 Route::get('/dashboard', [authGoogleController::class, 'hs_dashbord'])->middleware('auth')->name('dashboard');

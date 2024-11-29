@@ -148,4 +148,32 @@ $(document).ready(function() {
     });
 });
 
+// forgot password
+jQuery(document).ready(function (){
+
+    jQuery("#forgot_password_form").submit(function (e) {
+    
+          e.preventDefault(); 
+        //   var formData = jQuery(this).serialize();
+          var formData = new FormData(this);
+         
+
+        
+        //   console.log(formData);
+         
+            $.ajax({
+                        url: "/auth/user-forgot",  
+                        type: "POST",                         
+                        data: formData,                           
+                        contentType: false, // Important: Don't set the content type manually
+                        processData: false,      
+                        success: function(response) {   
+                            
+                                    if(response.status==true){
+                                        window.location.href = '/dashboard'; 
+                                    }
+                               }
+                    });
+                });
+  });
 

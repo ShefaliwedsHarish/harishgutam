@@ -3,10 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
     
+  
+
+public function emailtest(Request $request)
+{
+    $to_email = "hariom1gyan@gmail.com";
+    Mail::raw('Heelo my name is harish gautam .', function ($message) use ($to_email) {
+
+        $message->to($to_email)
+                ->subject('Forgot password');
+    });
+
+    dd("Simple Email Sent Successfully!");
+}
+
+
+
 
     /* Home  page */
     public  function hs_getindex(Request $request){  

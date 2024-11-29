@@ -119,7 +119,7 @@
                                                 </label>
                                             </div>
                                             <a href="#!" data-bs-toggle="modal"
-                                                data-bs-target="#forgot_password">Forgot password?</a>
+                                                data-bs-target="#forgot_password">Forgot password</a>
                                         </div>
 
                                         <!-- Submit button -->
@@ -164,6 +164,7 @@
                 <div class="modal-header h5 text-white bg-primary justify-content-center">
                     Password Reset
                 </div>
+                <form id="forgot_password_form">
                 <div class="modal-body px-5">
                     <p class="py-2">
                         Enter your email address and we'll send you an email with instructions to reset your password.
@@ -172,7 +173,10 @@
                         <input type="email" id="hs_forgotemail" class="form-control my-3" name="hs_forgotemail" />
                         <label class="form-label" for="typeEmail">Email input</label>
                     </div>
-                    <a href="#" data-mdb-ripple-init class="btn btn-primary w-100">Reset password</a>
+                    <button type="submit" class="btn btn-primary w-100">
+                        Forgot
+                    </button>
+                   
                     <div class="d-flex justify-content-between mt-4">
                         <a class="nav-link" data-bs-target="#login_user" data-bs-toggle="modal"
                             href="#">Login</a>
@@ -180,6 +184,7 @@
                             href="#">Register</a>
                     </div>
                 </div>
+             </form>
             </div>
         </div>
     </div>
