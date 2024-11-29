@@ -33,7 +33,7 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 
-// Home page routes
+// Home page routes This is testing 
 Route::get('/', [HomeController::class, 'hs_getindex'])->name('home');
 Route::get('/about', [HomeController::class, 'hs_getAbout'])->name('about_us');
 Route::get('/contact', [HomeController::class, 'hs_getContact'])->name('contact_us');
