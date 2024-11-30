@@ -338,3 +338,9 @@ background: #eee;
   .alert{
     display:none;
   }
+
+  /* forgot page */
+
+  .hs_forgotbutton{
+    display:none; 
+  }

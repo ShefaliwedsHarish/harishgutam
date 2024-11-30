@@ -1,3 +1,6 @@
+let spinner = '<div class="spinner-border m-5" role="status">' +
+              '</div>';
+
 $(document).ready(function (){
     
     $.ajaxSetup({
@@ -151,11 +154,17 @@ $(document).ready(function() {
 // forgot password
 jQuery(document).ready(function (){
 
+    
     jQuery("#forgot_password_form").submit(function (e) {
     
+        $(".hs_processer").html(spinner);
+         $(".hs_content").hide(); 
+        $(".hs_forgotbutton").show(); 
+        $(".forgot_button").hide(); 
           e.preventDefault(); 
         //   var formData = jQuery(this).serialize();
           var formData = new FormData(this);
+
          
 
         
@@ -169,19 +178,25 @@ jQuery(document).ready(function (){
                         processData: false,      
                         success: function(response) {   
 
-                                console.log(response);
                                 if(response.status==true){
-                                    $(".forgot_password").removeClass('alert-danger')
-                                    $(".forgot_password").addClass('alert-success');
-                                    $(".forgot_password").show(); 
-                                    $(".forgot_button").hide(); 
-                                    $(".forgot_password").html(response.message)
+                                    $(".forgot_password_status").removeClass('alert-danger')
+                                    $(".forgot_password_status").addClass('alert-success');
+                                    $(".forgot_password_status").show(); 
+                                    $(".hs_forgotbutton").html("Email send successfull")
+                                     $(".forgot_password_status").html(response.message);
+                                    $(".hs_content").show(); 
+                                    $(".hs_processer").hide();
                                     hs_hidealert(); 
                                 }else{
-                                    $(".forgot_password").addClass('alert-success');
-                                    $(".forgot_password").addClass('alert-danger')
-                                    $(".forgot_password").show(); 
-                                    $(".forgot_password").html(response.message)
+                               
+                                    $(".forgot_password_status").addClass('alert-success');
+                                    $(".forgot_password_status").addClass('alert-danger')
+                                    $(".hs_forgotbutton").hide();
+                                    $(".forgot_password_status").show(); 
+                                    $(".forgot_button").show(); 
+                                    $(".forgot_password_status").html(response.message);
+                                    $(".hs_content").show(); 
+                                    $(".hs_processer").hide();
                                     hs_hidealert(); 
                                 }
                                    

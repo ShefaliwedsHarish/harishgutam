@@ -103,21 +103,32 @@ class authGoogleController extends Controller
         return view('admin.pages.index', ['user_data' => $user]);
     }
 
-    public function hsuser_forgot(Request $request){
+  
 
-        $gmail=$request->hs_forgotemail;
-        $data=User::Where('email',$gmail)->first();
-        $user_id=$data->id; 
-        $user_name=md5($data->name);
-        $currentUrl =  url('/');
-        $resetUrl = $currentUrl.'/auth/reset-password/' .$user_name."_".$user_id ; // Generate a reset URL dynamically
-        Mail::to($gmail)->send(new ForgotPasswordEmail($resetUrl,$gmail));
-    
-        return response()->json(['message' => 'Password reset email sent','status'=>true], 200);
-       
-
-    }
-
+    public function hsuser_forgot(Request $request)
+        {
+            try {
+                $gmail = $request->hs_forgotemail;
+                if (!$gmail) {
+                    return response()->json(['message' => 'Email is required', 'status' => false], 200);
+                }
+                $data = User::where('email', $gmail)->first();
+                if (!$data) {
+                    return response()->json(['message' => 'User not found', 'status' => false], 200);
+                }
+                $user_id=$data->id; 
+                $user_name=md5($data->name);
+                $token=$user_name."_".$user_id;
+                $resetUrl = url('/auth/reset-password/' . $token);
+                Mail::to($gmail)->send(new ForgotPasswordEmail($resetUrl, $gmail));
+                $data->update(['remember_token' => $token]);
+                return response()->json(['message' => 'Password reset email sent', 'status' => true], 200);
+            } catch (\Exception $e) {
+                // Log the error for debugging
+                \Log::error('Error in hsuser_forgot: ' . $e->getMessage());
+                return response()->json(['message' => 'An error occurred', 'status' => false], 500);
+            }
+        }
 
     public function hs_showResetForm(Request $request ,$token){
         $parts = explode('_', $token); // Split the string by '_'
@@ -127,10 +138,9 @@ class authGoogleController extends Controller
        
         $user_name=md5($user->name);
        if($user_name==$name){
-          dd("show form "); 
-       }else{
-        dd("show not form"); 
+              return view('password.reset_password', ['user' => $user]);
        }
+       return view('password.reset_password');
     }
    
 

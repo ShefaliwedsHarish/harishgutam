@@ -156,24 +156,32 @@
     <!-- Modal -->
     <div class="modal top fade" id="forgot_password" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true">
-        <div class="modal-dialog" style="width: 300px;">
+      
+        <div class="modal-dialog hs_forgot_form" style="width: 300px;">
             <div class="modal-content text-center">
                 <div class="modal-header h5 text-white bg-primary justify-content-center">
                     Password Reset
                 </div>
-                <div class="alert alert-danger forgot_password" role="alert">
+                <div class="alert alert-danger forgot_password_status" role="alert">
                     A simple danger alert—check it out!
                   </div>
                 <form id="forgot_password_form">
-                <div class="modal-body px-5">
-                    <p class="py-2">
+                <div class="modal-body px-5 ">
+                    <div class="hs_processer">
+                    </div>
+                    <p class="py-2 hs_content">
                         Enter your email address and we'll send you an email with instructions to reset your password.
                     </p>
                     <div data-mdb-input-init class="form-outline">
                         <input type="email" id="hs_forgotemail" class="form-control my-3" name="hs_forgotemail" />
                         <label class="form-label" for="typeEmail">Email input</label>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 forgot_button">
+
+                    <span class=" hs_forgotbutton"> Loading .....</span>
+                 
+                  
+
+                    <button type="submit" class="btn btn-primary w-100  forgot_button">
                         Forgot
                     </button>
                    
@@ -289,10 +297,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                      
-
-
 
                                                         <div class="d-flex justify-content-end pt-3">
                                                             <button type="button" data-mdb-button-init
