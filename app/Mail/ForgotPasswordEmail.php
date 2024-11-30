@@ -13,13 +13,15 @@ class ForgotPasswordEmail extends Mailable
 {
     use Queueable, SerializesModels;
     public $url; 
+    public $email;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($url)
+    public function __construct($url,$email)
     {
         $this->url = $url;
+        $this->email=$email; 
         //
     }
 
@@ -39,9 +41,14 @@ class ForgotPasswordEmail extends Mailable
   
         public function build()
     {
+
         return $this
-        ->to($this->url)
-        ->html('<h1>Hello, this is a test</h1><p>This is a test email. Click <a href="' . $this->url . '">here</a> to reset your password.</p>');
+        ->to($this->email) // Ensure $recipientEmail contains a valid email address
+        ->html('<h1>Wellcome to HS Group</h1>
+                <p>Click Button to reset the password.</p> 
+               <a href="' . $this->url . '"> <button>Reset Password </button> </a>');
+    
+      
     }
 
 

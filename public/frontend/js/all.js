@@ -168,10 +168,23 @@ jQuery(document).ready(function (){
                         contentType: false, // Important: Don't set the content type manually
                         processData: false,      
                         success: function(response) {   
-                            
-                                    if(response.status==true){
-                                        window.location.href = '/dashboard'; 
-                                    }
+
+                                console.log(response);
+                                if(response.status==true){
+                                    $(".forgot_password").removeClass('alert-danger')
+                                    $(".forgot_password").addClass('alert-success');
+                                    $(".forgot_password").show(); 
+                                    $(".forgot_button").hide(); 
+                                    $(".forgot_password").html(response.message)
+                                    hs_hidealert(); 
+                                }else{
+                                    $(".forgot_password").addClass('alert-success');
+                                    $(".forgot_password").addClass('alert-danger')
+                                    $(".forgot_password").show(); 
+                                    $(".forgot_password").html(response.message)
+                                    hs_hidealert(); 
+                                }
+                                   
                                }
                     });
                 });

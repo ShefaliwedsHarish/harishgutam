@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
- 
     <title> @yield('title', 'HSGroup')</title>
-
     @include('layout.link')
 </head>
 
@@ -164,6 +161,9 @@
                 <div class="modal-header h5 text-white bg-primary justify-content-center">
                     Password Reset
                 </div>
+                <div class="alert alert-danger forgot_password" role="alert">
+                    A simple danger alert—check it out!
+                  </div>
                 <form id="forgot_password_form">
                 <div class="modal-body px-5">
                     <p class="py-2">
@@ -173,7 +173,7 @@
                         <input type="email" id="hs_forgotemail" class="form-control my-3" name="hs_forgotemail" />
                         <label class="form-label" for="typeEmail">Email input</label>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">
+                    <button type="submit" class="btn btn-primary w-100 forgot_button">
                         Forgot
                     </button>
                    

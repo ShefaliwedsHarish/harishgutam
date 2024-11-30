@@ -111,9 +111,10 @@ class authGoogleController extends Controller
         $user_name=md5($data->name);
         $currentUrl =  url('/');
         $resetUrl = $currentUrl.'/auth/reset-password/' .$user_name."_".$user_id ; // Generate a reset URL dynamically
-        Mail::to($request->email)->send(new ForgotPasswordEmail($resetUrl));
+        Mail::to($gmail)->send(new ForgotPasswordEmail($resetUrl,$gmail));
     
-        return response()->json(['message' => 'Password reset email sent.','status'=>'200']);
+        return response()->json(['message' => 'Password reset email sent','status'=>true], 200);
+       
 
     }
 
