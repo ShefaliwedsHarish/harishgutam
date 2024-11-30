@@ -32,6 +32,7 @@ Route::group(['prefix' => 'auth'], function () {
     
 });
 
+//testing for this is
 
 // Home page routes This is testing 
 Route::get('/', [HomeController::class, 'hs_getindex'])->name('home');
