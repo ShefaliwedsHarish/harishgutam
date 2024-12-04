@@ -344,3 +344,6 @@ background: #eee;
   .hs_forgotbutton{
     display:none; 
   }
+   .error_forgot{
+    color:red;
+   }

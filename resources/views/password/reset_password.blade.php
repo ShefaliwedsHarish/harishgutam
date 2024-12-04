@@ -102,16 +102,46 @@ Reset Password
     </style>
 
 
+
   @if(isset($user))
-    <form class="reset-form" action="/reset-password" method="POST">
+
+
+  
+  <form class="reset-form" action="{{ route('password.reset_password') }}" method="POST">
+        @csrf 
         <h2>Reset Password</h2>
         <label for="new-password">New Password</label>
-        <input type="password" id="new-password" name="new-password" required>
+        <input type="password" id="new-password" name="hs_password" required>
+        @if($errors->has('hs_password'))
+              <div class="error_forgot">{{ $errors->first('hs_password') }}</div>
+        @endif
         <label for="confirm-password">Confirm Password</label>
-        <input type="password" id="confirm-password" name="confirm-password" required>
+        <input type="password" id="confirm-password" name="hs_confirmpassword" required>
+        @if($errors->has('hs_confirmpassword'))
+            <div class="error_forgot">{{ $errors->first('hs_confirmpassword') }}</div>
+        @endif
+        <input type="hidden" id="confirm-password" name="user_id" value="{{$user->id}}">
+        <input type="hidden" id="confirm-password" name="user_token" value="{{$token}}">
         <button type="submit">Reset Password</button>
     </form>
-    @else 
+    @elseif(isset($expire))
+    <body>
+        <div class="container">
+            <h1>🚫 Expired Link</h1>
+            <p>The link you used has expired. Please request a password reset again.</p>
+            <p>If you continue to face issues, feel free to contact our support team.</p>
+            <a href="#" class="btn">Contact Support</a>
+        </div>
+        
+    </body>
+    @elseif(isset($success))
+    <body>
+        <div class="container">
+            <h1>✅ Password Successfully Changed</h1>
+            <p>Your password has been changed. Please log in again.</p>
+        </div>
+    </body>
+    @else
     <body>
         <div class="container">
             <h1>🚫 Access Denied</h1>

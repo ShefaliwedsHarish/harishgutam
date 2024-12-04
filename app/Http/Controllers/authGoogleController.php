@@ -9,6 +9,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ForgotPasswordEmail;
 use Illuminate\Support\Facades\Password;
+use DateTime;
 
      
 
@@ -121,7 +122,12 @@ class authGoogleController extends Controller
                 $token=$user_name."_".$user_id;
                 $resetUrl = url('/auth/reset-password/' . $token);
                 Mail::to($gmail)->send(new ForgotPasswordEmail($resetUrl, $gmail));
-                $data->update(['remember_token' => $token]);
+                $date = date("Y-m-d H:i:s"); 
+                $data->remember_token = $token; 
+                $data->valid_time=$date;#// Assign token directly
+                $data->save(); // Save the changes to the database
+
+             
                 return response()->json(['message' => 'Password reset email sent', 'status' => true], 200);
             } catch (\Exception $e) {
                 // Log the error for debugging
@@ -131,16 +137,70 @@ class authGoogleController extends Controller
         }
 
     public function hs_showResetForm(Request $request ,$token){
-        $parts = explode('_', $token); // Split the string by '_'
-        $name = $parts[0]; 
-        $id=$parts[1];
-        $user=User::find($id);
-       
+                $parts = explode('_', $token); // Split the string by '_'
+                $name = $parts[0]; 
+                $id=$parts[1];
+                $user=User::find($id);
+           
+                if(!empty($user)){
+                     $time=$user->valid_time;
+                    $date = date("Y-m-d H:i:s");  
+                    $validTime = new DateTime($time);
+                    $currentTime = new DateTime($date);
+                    $interval = $validTime->diff($currentTime);          
+                     $validite=env('MAIL_VAILD_TIME');
+                    if($interval->i>=$validite){
+                        return view('password.reset_password',['expire' =>$interval->i ]);
+                    }else{
+                        $user_name=md5($user->name);
+                        if($user_name==$name){
+                               return view('password.reset_password', ['user' => $user,'token'=>$name]);
+                        }else{
+                            return view('password.reset_password');
+                        }
+                    }
+                }else{
+                               return view('password.reset_password');
+
+                }   
+     
+    }
+    public function hs_change_password(Request $request){
+
+        $validatedData = $request->validate([
+            'hs_password' => 'required|string|min:6',
+            'hs_confirmpassword' => 'required|string|min:6|same:hs_password',
+            'user_id' => 'required|exists:users,id', // Ensure user_id exists in the users table
+        ]);
+  
+    
+        // Find the user by ID
+        $user = User::find($request->user_id);
+        // $url = url("auth/reset-password/" . $request->token . "_" . $request->user_id);
+
+      
         $user_name=md5($user->name);
-       if($user_name==$name){
-              return view('password.reset_password', ['user' => $user]);
-       }
-       return view('password.reset_password');
+      
+
+        // if($user_name==$request->user_token)
+
+        if($user_name==$request->user_token){
+
+            $user->password = $request->hs_password;
+            $user->save();
+           
+            return view('password.reset_password')->with([
+                'success' => 'Password updated successfully!',
+              ]);
+            
+        }  else{
+           
+            return view('password.reset_password')->with([
+                'error' => 'Invalid token.',
+                'user' => $user,
+                'token' => $request->user_token,
+            ]);
+        }
     }
    
 
