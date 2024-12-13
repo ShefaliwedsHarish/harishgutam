@@ -10,6 +10,7 @@ return [
     'epfo'=>'/EPFO/',
     'itr'=>'/itr',
     'admin'=>'/admin/',
+    'icon'=>'/icone/'
     
 ]; 
 

@@ -9,7 +9,16 @@
     @include('layout.link')
 </head>
 
+@php 
+
+$route=config('path.admin');
+$icone=config('path.icon');
+
+
+@endphp
+
 <body>
+
     {{-- hs_navbar_part --}}
 
     <div class="hs_socialmedia">
@@ -54,6 +63,24 @@
                             <a class="nav-link" href="{{ route('contact_us') }}">Contact Us</a>
                         </li>
 
+                       
+                        @if(isset(Auth::user()->id))
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('dashboard') }}">My Account  <span> <img class="rounded-circle" src="{{ Auth::user()->profile_picture ? Auth::user()->profile_picture : $route . 'img/user.jpg' }}" alt="" style="width: 40px; height: 40px;">
+                            </span></a>
+                           
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}">LogOut  <span><img src="{{$icone . 'logout_icon.png'}}" style="width: 30px; height: 30px;"></i>
+                            </span></a>
+                           
+                        </li>
+                        @else
+                       
+                    
+                  
                         <li class="nav-item">
                             <a class="nav-link" data-bs-target="#login_user" data-bs-toggle="modal"
                                 href="#">Login</a>
@@ -64,7 +91,7 @@
                                 href="#">Register</a>
                         </li>
 
-
+                        @endif
 
                     </ul>
 

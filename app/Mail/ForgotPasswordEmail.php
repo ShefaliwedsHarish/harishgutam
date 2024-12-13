@@ -43,7 +43,7 @@ class ForgotPasswordEmail extends Mailable
     {
 
         return $this
-        ->to($this->email) // Ensure $recipientEmail contains a valid email address
+        ->to($this->email) 
         ->html('<h1>Wellcome to HS Group</h1>
                 <p>Click Button to reset the password.</p> 
                <a href="' . $this->url . '"> <button>Reset Password </button> </a>');

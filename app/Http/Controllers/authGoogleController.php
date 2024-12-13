@@ -202,6 +202,16 @@ class authGoogleController extends Controller
             ]);
         }
     }
+
+    public function hs_kst(Request $request){
+
+
+        
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        return view('admin.pages.kst', ['user_data' => $user]);
+
+    }
    
 
 

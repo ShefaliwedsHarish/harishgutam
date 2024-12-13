@@ -45,6 +45,8 @@ Route::get('/send-simple-email', [HomeController::class, 'emailtest']);
 
 // Dashboard route (should be protected by authentication)
 Route::get('/dashboard', [authGoogleController::class, 'hs_dashbord'])->middleware('auth')->name('dashboard');
+Route::get('/kst', [authGoogleController::class, 'hs_kst'])->middleware('auth')->name('kst');
+
 
 // Admin registration route
 Route::get('/admin_register', [authGoogleController::class, 'adminRegistration'])->name('admin_register');
