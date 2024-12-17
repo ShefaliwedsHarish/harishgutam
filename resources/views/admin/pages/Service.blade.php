@@ -49,6 +49,8 @@ $route=config('path.admin')
       @endforeach
       @endif
      
+
+      
     </tbody>
   </table>
 </div> 
