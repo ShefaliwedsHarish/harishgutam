@@ -7,9 +7,12 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('style')
 
     <!-- Favicon -->
    @include('admin.layout.link')
+   @include('admin.layout.modal')
 </head>
 {{-- {{dd($user_data->profile_picture)}} --}}
 
@@ -45,13 +48,15 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Services</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Add Service</a>
                             <a href="button.html" class="dropdown-item">Online Service</a>
                             <a href="typography.html" class="dropdown-item">EPFO</a>
                             <a href="element.html" class="dropdown-item">ITR</a>
                         </div>
                     </div>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+                    <a href="{{route('kst')}}" class="nav-item nav-link"><i class="bi bi-people"></i> KST</a>
+                    <a href="{{route('service')}}" class="nav-item nav-link"><i class="bi bi-people"></i> Service</a>
+                    <a href="{{route('price')}}" class="nav-item nav-link"><i class="bi bi-people"></i> Prices</a>
                     <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
@@ -194,6 +199,7 @@
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
     
+    @yield('admin_script')
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -207,6 +213,8 @@
 
     <!-- Template Javascript -->
     <script src="{{$route}}js/main.js"></script>
+    <script src="{{$route}}js/custom_admin.js"></script>
+    
 </body>
 
 </html>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;  // Import the Auth facade
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\authGoogleController;  // Adjusted to PascalCase
+use App\Http\Controllers\ServiceController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -44,8 +45,8 @@ Route::get('/online', [HomeController::class, 'hs_onlineservice'])->name('online
 Route::get('/send-simple-email', [HomeController::class, 'emailtest']);
 
 // Dashboard route (should be protected by authentication)
-Route::get('/dashboard', [authGoogleController::class, 'hs_dashbord'])->middleware('auth')->name('dashboard');
-Route::get('/kst', [authGoogleController::class, 'hs_kst'])->middleware('auth')->name('kst');
+// Route::get('/dashboard', [authGoogleController::class, 'hs_dashbord'])->middleware('auth')->name('dashboard');
+// Route::get('/kst', [authGoogleController::class, 'hs_kst'])->middleware('auth')->name('kst');
 
 
 // Admin registration route
@@ -59,10 +60,20 @@ Route::get('/logout', function () {
 
 // Grouping routes for users under the 'user' prefix (with authentication middleware)
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
-    Route::get('dashboard', [authGoogleController::class, 'userDashboard'])->name('user.dashboard');
+    Route::get('dashboard', [authGoogleController::class, 'hs_dashbord'])->name('user_dashboard');
     Route::get('users', [authGoogleController::class, 'users'])->name('user.users');
+    Route::get('/kst', [ServiceController::class, 'hs_kst'])->name('user_kst'); 
+   
 });
 
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('dashboard', [authGoogleController::class, 'hs_dashbord'])->name('dashboard');
+    Route::get('/kst', [ServiceController::class, 'hs_kst'])->name('kst'); 
+    Route::get('/service', [ServiceController::class, 'hs_service'])->name('service');
+    Route::post('/save_service_submit', [ServiceController::class, 'hs_save_service_submit'])->name('save_service_submit');
+    Route::get('/price', [ServiceController::class, 'hs_price'])->name('price');
+});
 // Login and Registration routes (use controller methods instead of closures)
 Route::get('/login', [authGoogleController::class, 'showLoginForm'])->name('login');
 Route::get('/registration', [authGoogleController::class, 'showRegistrationForm'])->name('register');

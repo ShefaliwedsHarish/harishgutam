@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title> @yield('title', 'HSGroup')</title>
-    @include('layout.link')
+    <title> @yield('title', 'HSGroup') </title>
+     @include('layout.link')
+     @yield('style')
 </head>
 
 @php 
 
-$route=config('path.admin');
-$icone=config('path.icon');
+$route=config ('path.admin');
+$icone=config ('path.icon');
 
 
 @endphp
@@ -64,17 +65,15 @@ $icone=config('path.icon');
                         </li>
 
                        
-                        @if(isset(Auth::user()->id))
+                        @if (isset(Auth::user()->id))
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard') }}">My Account  <span> <img class="rounded-circle" src="{{ Auth::user()->profile_picture ? Auth::user()->profile_picture : $route . 'img/user.jpg' }}" alt="" style="width: 40px; height: 40px;">
-                            </span></a>
+                            <a class="nav-link" href="{{ route('dashboard') }}">My Account </a>
                            
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}">LogOut  <span><img src="{{$icone . 'logout_icon.png'}}" style="width: 30px; height: 30px;"></i>
-                            </span></a>
+                            <a class="nav-link" href="{{ route('logout') }}">LogOut </a>
                            
                         </li>
                         @else
@@ -159,9 +158,9 @@ $icone=config('path.icon');
                                         </div>
 
                                         <a data-mdb-ripple-init class="btn btn-primary btn-lg btn-block"
-                                            style="background-color: #3b5998" href="{{ route('google_login') }}"
+                                            style="background-color: #b9c5e0" href="{{ route('google_login') }}"
                                             role="button">
-                                            <i class="fab fa-google-f me-2"></i>Continue with Google
+                                            <img src="https://img.icons8.com/?size=100&id=43364&format=png&color=000000" style="height:30px"> 
                                         </a>
                                     </form>
                                 </div>
@@ -361,6 +360,7 @@ $icone=config('path.icon');
     @yield('content')
 </body>
 
+ @yield('script')
 {{-- footer part  --}}
 <footer class="bg-body-tertiary text-center text-lg-start">
     <!-- Copyright -->
