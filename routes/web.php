@@ -58,6 +58,7 @@ Route::get('/logout', function () {
     return redirect('/');
 })->name('logout');
 
+Route::get('this');
 // Grouping routes for users under the 'user' prefix (with authentication middleware)
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     Route::get('dashboard', [authGoogleController::class, 'hs_dashbord'])->name('user_dashboard');
