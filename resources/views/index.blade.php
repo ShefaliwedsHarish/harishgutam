@@ -6,7 +6,10 @@
 
 @section('content')
 @php 
-$config=config('path.craousal');
+// $config=config('path.craousal');
+
+$config = config('APP_ENV') == 'live' ? config('live_path.craousal') : config('path.craousal');
+
 @endphp 
 
 <body>

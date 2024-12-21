@@ -17,7 +17,7 @@ return [
     'google'=>[
           'client_id'=>env('GOOGLE_CLINT_ID'),
           'client_secret'=>env('GOOGLE_SECRET_ID'),
-          'redirect'=>'http://127.0.0.1:8000/auth/google_callback',
+          'redirect'=>env('GOOGLE_REDIRECT_URL'),
     ],
 
     'mailgun' => [

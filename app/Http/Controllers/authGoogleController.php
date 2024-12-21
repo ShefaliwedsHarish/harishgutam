@@ -25,8 +25,9 @@ class authGoogleController extends Controller
     }
 
     public function hsValidateLogin(){
-        $user = Socialite::driver('google')->user();
    
+        $user = Socialite::driver('google')->user();
+    
             $user = User::updateOrCreate([
                 'email' => $user->email,
             ], [

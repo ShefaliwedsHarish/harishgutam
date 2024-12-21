@@ -9,7 +9,8 @@
     <body>
         @include('layout.first_section')
         @php 
-        $route=config('path.assets')
+        // $route=config('path.assets')
+        $route = config('APP_ENV') == 'live' ? config('live_path.assets') : config('path.assets');
         @endphp
          
         <section>

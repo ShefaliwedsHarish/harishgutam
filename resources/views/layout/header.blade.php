@@ -12,9 +12,11 @@
 
 @php 
 
-$route=config ('path.admin');
-$icone=config ('path.icon');
+// $route=config ('path.admin');
+// $icone=config ('path.icon');
 
+$route = config('APP_ENV') == 'live' ? config('live_path.admin') : config('path.admin');
+$icone=config('APP_ENV') == 'live' ? config('live_path.icon') : config('path.icon');
 
 @endphp
 

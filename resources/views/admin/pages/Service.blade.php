@@ -1,6 +1,6 @@
 @php
-$route=config('path.admin')
-
+// $route=config('path.admin')
+$route=config('APP_ENV') == 'live' ? config('live_path.admin') : config('path.admin');
 @endphp
 @extends('admin.layout.header')
 @section('title')
