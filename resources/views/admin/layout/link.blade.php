@@ -1,7 +1,7 @@
 
 @php
- $route = config('APP_ENV') == 'live' ? config('live_path.admin') : config('path.admin');
-
+// $route=config('path.admin')
+$route = env('APP_ENV') == 'live' ? config('live_path.admin') : config('path.admin');
 @endphp
 
 <link href="admin/img/favicon.ico" rel="icon">

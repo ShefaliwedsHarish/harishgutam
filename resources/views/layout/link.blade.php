@@ -1,5 +1,8 @@
 @php
-$route=config('path.css')
+// $route=config('path.css')
+
+
+$route=env('APP_ENV') == 'live' ? config('live_path.css') : config('path.css');
 
 @endphp
 
