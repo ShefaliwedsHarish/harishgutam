@@ -1,4 +1,6 @@
-   <!------------- Add Price Modal ---------------->
+   <!------------- Add Price Modal this is  ---------------->
+   
+
 
 
    <div class="modal fade" id="add_price" tabindex="-1" aria-labelledby="add_price_data" aria-hidden="true">
@@ -9,11 +11,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
        
-         <form> 
+         <form id="save_service_price"> 
              <div class="modal-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Select Service</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" name="service_id">
                             <option selected>Open this select menu</option>
                            @if(isset($service)) 
                             @foreach($service as $service_value)
@@ -23,13 +25,21 @@
                         </select>
                     </div> 
 
+                    <div class="alert alert-danger" id="service_id-error">                                                                
+                    </div>
+
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Total Price</label>
-                        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Total price">
+                        <label for="total_lebalinput">Total Price</label>
+                        <input type="number" class="form-control" id="total_price" aria-describedby="price" placeholder="Total price" name="total_price">
+                    </div>
+
+                    <div class="alert alert-danger" id="total_price-error">                                               
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Profit</label>
-                        <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Profit">
+                        <label for="profit_lebalinput">Amount pay by Company</label>
+                        <input type="number" class="form-control" id="Amount pay by company" placeholder="" name="apc">
+                    </div>
+                    <div class="alert alert-danger" id="apc-error">                                                 
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -113,9 +123,21 @@
         </div>
       </div>
 
+ 
+      <!------------- Add  View Service offcanvas ---------------->
 
 
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="edit_service" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel">Edit Service</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+                   
+           <form id="edit_service_submit">
+           <div id="edit_area">
 
-
-
-      
+           </div>
+           </form> 
+        </div>
+      </div>

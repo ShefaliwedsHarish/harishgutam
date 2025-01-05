@@ -21,8 +21,8 @@ Route::fallback(function () {
     return redirect()->route('home'); // Replace 'home' with your actual homepage route name
 });
 
+Route::get('/test',[ServiceController::class, 'hs_test']);
 
-Route::get('thisi am here'); 
 // Google authentication routes
 Route::group(['prefix' => 'auth'], function () {
     Route::get('/redirect', [authGoogleController::class, 'hsgoogleLogin'])->name('google_login');
@@ -47,8 +47,6 @@ Route::get('/online', [HomeController::class, 'hs_onlineservice'])->name('online
 Route::get('/send-simple-email', [HomeController::class, 'emailtest']);
 
 // Dashboard route (should be protected by authentication)
-// Route::get('/dashboard', [authGoogleController::class, 'hs_dashbord'])->middleware('auth')->name('dashboard');
-// Route::get('/kst', [authGoogleController::class, 'hs_kst'])->middleware('auth')->name('kst');
 
 
 // Admin registration route
@@ -75,7 +73,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/kst', [ServiceController::class, 'hs_kst'])->name('kst'); 
     Route::get('/service', [ServiceController::class, 'hs_service'])->name('service');
     Route::post('/save_service_submit', [ServiceController::class, 'hs_save_service_submit'])->name('save_service_submit');
+    Route::post('/delete/{id}/{tag}',[ServiceController::class, 'hs_delete']); 
+    Route::post('/service/{id}/{tag}',[ServiceController::class, 'hs_service_edit']); 
     Route::get('/price', [ServiceController::class, 'hs_price'])->name('price');
+    Route::post('/save_price_submit', [ServiceController::class, 'hs_save_price_submit']);
+    
 });
 // Login and Registration routes (use controller methods instead of closures)
 Route::get('/login', [authGoogleController::class, 'showLoginForm'])->name('login');

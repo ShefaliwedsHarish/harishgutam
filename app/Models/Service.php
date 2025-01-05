@@ -19,4 +19,11 @@ class Service extends Model
         'description',
         'status',
     ];
+
+
+    public function price()
+    {
+        // 'service_id' is the foreign key in the service_prices table
+        return $this->hasOne(service_price::class, 'service_id');
+    }
 }
