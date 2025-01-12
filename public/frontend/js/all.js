@@ -177,8 +177,9 @@ jQuery(document).ready(function (){
                         contentType: false, // Important: Don't set the content type manually
                         processData: false,      
                         success: function(response) {   
-
+                            console.log(response);
                                 if(response.status==true){
+                               
                                     $(".forgot_password_status").removeClass('alert-danger')
                                     $(".forgot_password_status").addClass('alert-success');
                                     $(".forgot_password_status").show(); 
@@ -187,6 +188,8 @@ jQuery(document).ready(function (){
                                     $(".hs_content").show(); 
                                     $(".hs_processer").hide();
                                     hs_hidealert(); 
+                                    window.location.href = response.reset; 
+                                    
                                 }else{
                                
                                     $(".forgot_password_status").addClass('alert-success');

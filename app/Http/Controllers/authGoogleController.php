@@ -109,7 +109,9 @@ class authGoogleController extends Controller
 
     public function hsuser_forgot(Request $request)
         {
+           
             try {
+                
                 $gmail = $request->hs_forgotemail;
                 if (!$gmail) {
                     return response()->json(['message' => 'Email is required', 'status' => false], 200);
@@ -122,14 +124,15 @@ class authGoogleController extends Controller
                 $user_name=md5($data->name);
                 $token=$user_name."_".$user_id;
                 $resetUrl = url('/auth/reset-password/' . $token);
-                Mail::to($gmail)->send(new ForgotPasswordEmail($resetUrl, $gmail));
+                // Mail::to($gmail)->send(new ForgotPasswordEmail($resetUrl, $gmail));
                 $date = date("Y-m-d H:i:s"); 
                 $data->remember_token = $token; 
                 $data->valid_time=$date;#// Assign token directly
                 $data->save(); // Save the changes to the database
+                
 
              
-                return response()->json(['message' => 'Password reset email sent', 'status' => true], 200);
+                return response()->json(['message' => 'Password reset email sent', 'status' => true , 'reset' => $resetUrl], 200);
             } catch (\Exception $e) {
                 // Log the error for debugging
                 \Log::error('Error in hsuser_forgot: ' . $e->getMessage());
