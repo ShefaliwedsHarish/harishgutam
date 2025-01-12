@@ -177,19 +177,19 @@ jQuery(document).ready(function (){
                         contentType: false, // Important: Don't set the content type manually
                         processData: false,      
                         success: function(response) {   
-                            console.log(response);
+                            alert('sorry');
                                 if(response.status==true){
-                               
-                                    
-                                    $(".forgot_password_status").removeClass('alert-danger')
-                                    $(".forgot_password_status").addClass('alert-success');
-                                    $(".forgot_password_status").show(); 
-                                    $(".hs_forgotbutton").html("Email send successfull")
-                                     $(".forgot_password_status").html(response.message);
-                                    $(".hs_content").show(); 
-                                    $(".hs_processer").hide();
-                                    hs_hidealert(); 
-                                    window.location.href = response.reset; 
+                                    alert("heelo this is testing");
+                                    // console.log('heelo this is testing');
+                                    // $(".forgot_password_status").removeClass('alert-danger')
+                                    // $(".forgot_password_status").addClass('alert-success');
+                                    // $(".forgot_password_status").show(); 
+                                    // $(".hs_forgotbutton").html("Email send successfull")
+                                    //  $(".forgot_password_status").html(response.message);
+                                    // $(".hs_content").show(); 
+                                    // $(".hs_processer").hide();
+                                    // hs_hidealert(); 
+                                    // window.location.href = response.reset; 
                                     
                                 }else{
                                
