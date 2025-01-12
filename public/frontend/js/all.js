@@ -183,8 +183,7 @@ jQuery(document).ready(function (){
                                     $(".forgot_password_status").removeClass('alert-danger')
                                     $(".forgot_password_status").addClass('alert-success');
                                     $(".forgot_password_status").show(); 
-                                    $(".hs_forgotbutton").html("Email send successfull")
-                                     $(".forgot_password_status").html(response.message);
+                                    $(".forgot_password_status").html(response.message);
                                     $(".hs_content").show(); 
                                     $(".hs_processer").hide();
                                     hs_hidealert(); 
