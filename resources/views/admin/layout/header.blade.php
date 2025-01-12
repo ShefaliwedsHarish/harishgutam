@@ -55,6 +55,7 @@
                         </div>
                     </div>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+                    <a href="{{route('slider')}}" class="nav-item nav-link"><i class="bi bi-people"></i> Slider</a>
                     <a href="{{route('kst')}}" class="nav-item nav-link"><i class="bi bi-people"></i> KST</a>
                     <a href="{{route('service')}}" class="nav-item nav-link"><i class="bi bi-people"></i> Service</a>
                     <a href="{{route('price')}}" class="nav-item nav-link"><i class="bi bi-people"></i> Prices</a>

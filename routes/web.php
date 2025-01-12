@@ -72,6 +72,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('dashboard', [authGoogleController::class, 'hs_dashbord'])->name('dashboard');
     Route::get('/kst', [ServiceController::class, 'hs_kst'])->name('kst'); 
     Route::get('/service', [ServiceController::class, 'hs_service'])->name('service');
+    Route::get('/slider', [ServiceController::class, 'hs_slider'])->name('slider'); 
     Route::post('/save_service_submit', [ServiceController::class, 'hs_save_service_submit'])->name('save_service_submit');
     Route::post('/delete/{id}/{tag}',[ServiceController::class, 'hs_delete']); 
     Route::post('/service/{id}/{tag}',[ServiceController::class, 'hs_service_edit']); 

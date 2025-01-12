@@ -164,6 +164,8 @@ class ServiceController extends GloballyController
           }
 
 
+
+
           /*** Edit Form ***/
         public function hs_service_edit (Request $request, $eid, $tag){
 
@@ -191,7 +193,16 @@ class ServiceController extends GloballyController
 
         }
 
+ /*** Slider Part ***/
 
+ public function hs_slider(Request $request){
+
+    $id = Auth::user()->id;
+    $user = User::find($id);
+    return view('admin.pages.slider', ['user_data' => $user]);
+
+
+ }
 
   
 
