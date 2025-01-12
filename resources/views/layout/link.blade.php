@@ -22,4 +22,4 @@ $route=env('APP_ENV') == 'live' ? config('live_path.css') : config('path.css');
 
   {{-- Custom link --}}
   <link rel="stylesheet" href="{{$route}}css/style.css" />
-  <script src="{{$route}}js/all.js"></script>
+  <script src="{{$route}}js/all.js?ver=1"></script>
