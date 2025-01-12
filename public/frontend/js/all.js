@@ -180,6 +180,7 @@ jQuery(document).ready(function (){
                             console.log(response);
                                 if(response.status==true){
                                
+                                    
                                     $(".forgot_password_status").removeClass('alert-danger')
                                     $(".forgot_password_status").addClass('alert-success');
                                     $(".forgot_password_status").show(); 
