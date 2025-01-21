@@ -52,70 +52,20 @@ img.card-img-top {
             <div class="hs_slierpart">
 
             <div class="container text-center">
-                    <div class="row">
-                        <div class="col">
+                    <div class="row slider_images">
+                   
+                @foreach($slider_image as $slider)
+                    <div class="col" id="row_{{$slider->id}}">
                             <div class="card" style="width: 18rem;">
-                                <img src="{{$config}}img1.jpg" class="card-img-top" alt="...">
+                                <img src="{{$config}}{{$slider->image_name}}" class="card-img-top" alt="...">
                               <button class="delete_slider">
-                                <i class="bi bi-trash image_detete" style="font-size:26px;color:#ff0000" data-did="1" data-ser="Slider"></i>
-                                <i class="bi bi-eye-fill view_images" style="font-size:26px" data-vid="1"></i>
+                                <i class="bi bi-trash image_detete" style="font-size:26px;color:#ff0000" data-did="{{$slider->id}}" data-ser="Slider"></i>
+                                <i class="bi bi-eye-fill view_images" style="font-size:26px" data-vid="{{$slider->id}}"></i>
                             </button>
                             </div>
                           
                         </div>
-                       
-
-                        <div class="col ">
-                            <div class="card" style="width: 18rem;">
-                                    <img src="{{$config}}img2.jpg" class="card-img-top" alt="...">
-                                    <button class="delete_slider">
-                                    <i class="bi bi-trash image_detete" style="font-size:26px;color:#ff0000" data-did="1" data-ser="Slider"></i>
-                                    <i class="bi bi-eye-fill view_images" style="font-size:26px" data-vid="1"></i>
-                                 </button>
-                                </div>
-                               </div>
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
-                                    <img src="{{$config}}img3.jpg" class="card-img-top" alt="...">
-                                    <button class="delete_slider">
-                                    <i class="bi bi-trash image_detete" style="font-size:26px;color:#ff0000" data-did="1" data-ser="Slider"></i>
-                                <i class="bi bi-eye-fill view_images" style="font-size:26px" data-vid="1"></i>
-   
-                              </button>
-                            </div>
-                           </div>
-
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
-                                <img src="{{$config}}img4.jpg" class="card-img-top" alt="...">
-                                <button class="delete_slider">
-                                <i class="bi bi-trash" style="font-size:26px;color:#ff0000" data-did="1" data-ser="Service"></i>
-                              </button>
-                            </div>
-                           </div>
-                        <div class="col ">
-                            <div class="card" style="width: 18rem;">
-                                    <img src="{{$config}}img5.jpg" class="card-img-top" alt="...">
-                                    <button class="delete_slider">
-                                    <i class="bi bi-trash image_detete" style="font-size:26px;color:#ff0000" data-did="1" data-ser="Slider"></i>
-                                <i class="bi bi-eye-fill view_images" style="font-size:26px" data-vid="1"></i>
-                 </button>
-                                </div>
-                               </div>
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
-                                    <img src="{{$config}}img6.jpg" class="card-img-top" alt="...">
-                                    <button class="delete_slider">
-                                    <i class="bi bi-trash image_detete" style="font-size:26px;color:#ff0000" data-did="1" data-ser="Slider"></i>
-                                <i class="bi bi-eye-fill view_images" style="font-size:26px" data-vid="1"></i>
-                           </button>
-                            </div>
-
-                            </div>
-                    </div>
-            </div>      
-            </div> 
-</div> 
+                @endforeach
 
 
 

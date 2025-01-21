@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Models\SliderImages; 
 
 class HomeController extends Controller
 {
@@ -27,7 +28,9 @@ public function emailtest(Request $request)
 
     /* Home  page */
     public  function hs_getindex(Request $request){  
-             return view('index');
+        $slider=SliderImages::where('status',1)->get(); 
+        return view('index',['slider_image'=>$slider]);
+            
     }
 
   /* About us page */

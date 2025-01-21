@@ -1,6 +1,24 @@
 let spinner = '<div class="spinner-border m-5" role="status">' +
               '</div>';
 
+                /*** Delete  Function  ***/
+     function delete_function(id,service){
+        
+        $.ajax({
+            url: '/admin/delete/'+id+'/'+service, 
+            type: 'POST', 
+            processData: false, 
+            contentType: false, 
+        
+            success: function (response) {
+            if(response.status==200){
+                    jQuery("#row_"+id).hide(); 
+                    alert(response.message)
+                }
+            } 
+        });
+}
+
 $(document).ready(function (){
     
     $.ajaxSetup ({
@@ -35,7 +53,7 @@ $(document).ready(function () {
             contentType: false, 
           
             success: function (response) {
-                console.log("Success:", response.data);
+              
                 let rows = ''; 
                 $.each(response.data, function (key, value) {
                     rows += '<tr id="row_'+value.id +'">'; 
@@ -99,8 +117,7 @@ $(document).ready(function () {
         contentType: false, 
       
         success: function (response) {
-            console.log("Success:", response);
-            // Add your success handling logic here
+           
             alert("Service submitted successfully!");
         },error: function(xhr) {
             if (xhr.status === 422) {
@@ -162,33 +179,75 @@ $(document).on("click",".delete_service",function (e){
     }
         
 
-     /*** Delete  Function  ***/
-     function delete_function(id,service){
-        
-            $.ajax({
-                url: '/admin/delete/'+id+'/'+service, 
-                type: 'POST', 
-                processData: false, 
-                contentType: false, 
-            
-                success: function (response) {
-                if(response.status==200){
-                        jQuery("#row_"+id).hide(); 
-                        alert(response.message)
-                    }
-                } 
+   
+
+    
+});
+
+            /*** Edit form ***/
+            $(document).ready(function () {
+                
+                $("#edit_service_submit").on("submit", function (e) {
+                    e.preventDefault();
+                 
+                });
             });
-   }
 
 
-    
-});
 
-   /*** Edit form ***/
-   $(document).ready(function () {
-    
-    $("#edit_service_submit").on("submit", function (e) {
-        e.preventDefault();
-        alert('Hello, this is testing');
-    });
-});
+            /**** Code for Slider image ********/
+            $(document).ready(function () {
+
+                // Code for slider
+                $("#slider_image").on("submit", function (e) {
+                    e.preventDefault(); 
+                    var form = new FormData(this); 
+
+                    $.ajax({
+                        url: '/admin/save_slider_image', 
+                        type: 'POST', 
+                        data: form,
+                        processData: false, 
+                        contentType: false, 
+                    
+                        success: function (response) {
+
+                            let rows = ''; 
+                            $.each(response.data, function (key, value) {
+                           
+                                rows += '<div class="col" id="row_'+value.id+'">';                           
+                                rows += '<div class="card" style="width: 18rem;">';  
+                                rows += '<img src="'+response.images_path + value.image_name+'" class="card-img-top" alt="...">';  
+                                rows += '<button class="delete_slider">' ;                          
+                                rows += ' <i class="bi bi-trash image_detete" style="font-size:26px;color:#ff0000" data-did="'+value.id+'" data-ser="Slider"></i>';
+                                rows += '<i class="bi bi-eye-fill view_images" style="font-size:26px" data-vid="'+value.id+'"></i>';
+                                rows += '   </button>';
+                                rows += ' </div>';
+                                rows += '</div>';
+                    
+                            });
+                            $('.slider_images').html(rows);
+                
+                             $('#add_image').modal('hide');
+                            alert("Service submitted successfully!");
+                        }
+                        
+                        });
+                    });
+
+                 /***Delete slider images ***/
+                   
+                 jQuery(document).on("click",".image_detete",function (e){
+                    e.preventDefault(); 
+                    var id =$(this).data("did");  
+                    var service=jQuery(this).data('ser');
+                       delete_function(id,service); 
+                   
+
+                 });
+                 
+                 
+            }); 
+
+           
+           

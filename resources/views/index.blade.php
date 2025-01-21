@@ -16,12 +16,15 @@ $config = env('APP_ENV') == 'live' ? config('live_path.craousal') : config('path
 <!-- Swiper -->
 <div class="swiper homeslider">
   <div class="swiper-wrapper">
-    <div class="swiper-slide"><img src="{{$config}}img1.jpg"> </div>
+    @foreach($slider_image as $slider)
+    <div class="swiper-slide"><img src="{{$config}}{{$slider->image_name}}"> </div>
+    @endforeach
+    <!-- <div class="swiper-slide"><img src="{{$config}}img1.jpg"> </div>
     <div class="swiper-slide"><img src="{{$config}}img2.jpg"></div>
     <div class="swiper-slide"><img src="{{$config}}img3.jpg"></div>
     <div class="swiper-slide"><img src="{{$config}}img4.jpg"></div>
     <div class="swiper-slide"><img src="{{$config}}img5.jpg"></div>
-    <div class="swiper-slide"><img src="{{$config}}img6.jpg"></div>
+    <div class="swiper-slide"><img src="{{$config}}img6.jpg"></div> -->
   </div>
   {{-- <div class="swiper-pagination"></div> --}}
 </div>

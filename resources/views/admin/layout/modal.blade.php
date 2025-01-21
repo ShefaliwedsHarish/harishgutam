@@ -61,21 +61,31 @@
               <h1 class="modal-title fs-5" id="add_price_data">Add Image</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                       <div class="mb-3">
-                          <label for="slider_image" class="form-label">Slider Image</label>
-                          <input type="file" class="form-control" id="images" placeholder="images" name="images">
-                        </div>
-                        <div class="mb-3">
-                          <label for="details" class="form-label">Image details </label>
-                          <textarea class="form-control" id="details" rows="3" name="details"></textarea>
-                        </div>
-              
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            <form id="slider_image">
+                  <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="slider_image" class="form-label">Slider Image</label>
+                                <input type="file" class="form-control" id="images" placeholder="images" name="images">
+                              </div>
+                              <div class="mb-3">
+                                <label for="details" class="form-label">Image details </label>
+                                <textarea class="form-control" id="details" rows="3" name="details"></textarea>
+                              </div>
+
+                              <div class="mb-3">
+                                      <div class="form-check form-switch">
+                                          <input class="form-check-input" type="checkbox" id="Status" name="status">
+                                          <label class="form-check-label" for="Status">Status</label>
+                                        </div>
+                              </div> 
+                      
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" value="Saved">
+                  </div>
+         </form> 
           </div>
         </div>
       </div>

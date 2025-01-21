@@ -78,6 +78,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/service/{id}/{tag}',[ServiceController::class, 'hs_service_edit']); 
     Route::get('/price', [ServiceController::class, 'hs_price'])->name('price');
     Route::post('/save_price_submit', [ServiceController::class, 'hs_save_price_submit']);
+    Route::post('/save_slider_image', [ServiceController::class, 'hs_save_slider_image']);
+
     
 });
 // Login and Registration routes (use controller methods instead of closures)
