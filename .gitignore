@@ -20,3 +20,7 @@ yarn-error.log
 # Miscellaneous
 /index.php
 /public/index.php
+/public/assets_images
+/public/icone
+/public/slider
+
