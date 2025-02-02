@@ -363,11 +363,12 @@ $icone=env('APP_ENV') == 'live' ? config('live_path.icon') : config('path.icon')
 </body>
 
  @yield('script')
+
 {{-- footer part  --}}
 <footer class="bg-body-tertiary text-center text-lg-start">
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2020 Copyright:
+        © 2022 to 2025 Copyright:
         <a class="text-body" href="">HS</a>
     </div>
     <!-- Copyright -->

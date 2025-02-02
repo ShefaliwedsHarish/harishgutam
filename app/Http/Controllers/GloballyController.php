@@ -51,4 +51,8 @@ class GloballyController extends Controller
 
         return $html;
     }
+
+    public function store_images(){
+
+    }
 }
