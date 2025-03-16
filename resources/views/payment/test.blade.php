@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>V3 API</title>
+    <title>HS Group</title>
 </head>
 
 <body style="background-color: #6933d3; color:white !important;">
     <div class="row">
         <div class="col-md-4">
-            <h3 style="margin-top: 50% !important; text-align: center;">Cashfree V3 Api Demo on Laravel Framework</h3>
+            <h3 style="margin-top: 50% !important; text-align: center;">Test HS payment Form</h3>
 
         </div>
         <div class="col-md-4" style="float: right !important;">

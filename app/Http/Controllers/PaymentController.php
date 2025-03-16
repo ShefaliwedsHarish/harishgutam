@@ -44,8 +44,8 @@ class PaymentController extends Controller
        )
        );
       
-              $url = "https://api.cashfree.com/pg/orders";
-                //  $url=env('CASHFREE_URL');
+            //   $url = "https://api.cashfree.com/pg/orders";
+                 $url=env('CASHFREE_URL')."/orders";
             
                $data_string = json_encode($frmData );
               
@@ -86,8 +86,8 @@ class PaymentController extends Controller
     }
 
 
-    public function success(Request $request)
-    {
+    public function success(Request $request){
+
         $orderId = $request->input('order_id');
         $paymentId = $request->input('payment_id');
         return view('payment.success', compact('orderId', 'paymentId'));

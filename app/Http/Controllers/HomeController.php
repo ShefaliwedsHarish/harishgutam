@@ -23,6 +23,77 @@ public function emailtest(Request $request)
     dd("Simple Email Sent Successfully!");
 }
 
+public function sendtexttovoice(Request $request){
+    $apiKey = env('MURF_API_KEY');
+    $url = 'https://api.murf.ai/v1/speech/generate';
+
+    $postData = [
+        "voiceId" => "hi-IN-ayushi",
+        "style" => "Conversational",
+        "text" => "देवी और सज्जनों, आपके अकाउंट में ".$request->amount." रुपये आए हैं।",
+        "rate" => 0,
+        "pitch" => 0,
+        "sampleRate" => 48000,
+        "format" => "MP3",
+        "channelType" => "MONO",
+        "pronunciationDictionary" => new \stdClass(),
+        "encodeAsBase64" => false,
+        "variation" => 1,
+        "audioDuration" => 0,
+        "modelVersion" => "GEN2",
+        "multiNativeLocale" => "hi-IN"
+    ];
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, [
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => json_encode($postData),
+        CURLOPT_HTTPHEADER => [
+            'Content-Type: application/json',
+            'Accept: application/json',
+            'api-key: ' . $apiKey,
+        ],
+    ]);
+
+    $response = curl_exec($curl);
+    $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    $curlError = curl_error($curl);
+
+    //    dd($response);
+    curl_close($curl);
+
+    if ($curlError) {
+        return response()->json(['error' => $curlError], 500);
+    }
+
+    $responseData = json_decode($response, true);
+    // dd($responseData);
+
+    if (isset($responseData['audioFile'])) {
+        return response()->json([
+            'success' => true,
+            'audioFile' => $responseData['audioFile']
+        ]);
+    } else {
+        return response()->json(['error' => 'Audio file not found'], 500);
+    }
+ 
+}
+public function textToVoice()
+{
+
+    return view('speach');
+    
+}
+
 
 
 

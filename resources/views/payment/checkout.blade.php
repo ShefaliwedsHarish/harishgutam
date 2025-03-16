@@ -24,8 +24,10 @@
    
         function payment() {
             const cashfree = Cashfree({
-                mode: "sandbox" //or production
-                //  mode: "production"
+                // mode: "sandbox" //or production
+                //  mode: "production"h7
+                   mode: "{{ env('CASHFREE_ENV') }}"
+                   
             });
             let checkoutOptions = {
                 paymentSessionId: document.getElementById("paymentSessionId").value,

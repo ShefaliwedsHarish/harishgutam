@@ -18,9 +18,9 @@
 
    $orderid = $_REQUEST['order_id'];
 //    $url=env('CASHFREE_URL')."/".$orderid."/payments";
-   $url = "https://api.cashfree.com/pg/orders/$orderid/payments";
-
-   $ch = curl_init();
+//    $url = "https://api.cashfree.com/pg/orders/$orderid/payments";
+      $url=env('CASHFREE_URL')."/orders/{$orderid}";
+      $ch = curl_init();
 
    $ch = curl_init();
    curl_setopt($ch, CURLOPT_URL, "$url");
@@ -45,6 +45,7 @@
    $returnCode = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
    curl_close($ch);
    $resps= json_decode($results, true);
+//    dd($resps); 
 ?>
 
 

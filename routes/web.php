@@ -46,6 +46,8 @@ Route::get('/contact', [HomeController::class, 'hs_getContact'])->name('contact_
 
 Route::get('/online', [HomeController::class, 'hs_onlineservice'])->name('online_service');
 Route::get('/send-simple-email', [HomeController::class, 'emailtest']);
+Route::get('/search', [HomeController::class, 'texttovoice']);
+Route::post('send',[HomeController::class, 'sendtexttovoice'])->name('send.amount');
 
 // Dashboard route (should be protected by authentication)
 
@@ -93,9 +95,7 @@ Route::get('/registration', [authGoogleController::class, 'showRegistrationForm'
 
 
 // payment getway
-Route::get('/example', function () {
-    return view('example');
-});
+
 Route::get('/pay', [PaymentController::class, 'textform']);
 Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');
 Route::post('/submit-form', [PaymentController::class, 'submit'])->name('form.submit');
